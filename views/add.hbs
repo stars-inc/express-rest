@@ -1,1 +1,27 @@
 <h1>Add Wishes</h1>
+
+<form 
+  action="/add"
+  method="POST"
+  class="col s12">
+  <div class="row">
+    <div class="input-field col s6">
+      <input id="title" name="title" type="text" class="validate" required>
+      <label for="title">Your wish</label>
+      <span class="helper-text" data-error="type something">type something</span>
+    </div>
+    <div class="input-field col s6">
+      <input id="count" name="count" type="number" class="validate" required min="1">
+      <label for="count">Count Wishes</label>
+      <span class="helper-text" data-error="type something">type something</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <input id="url" name="url" type="text" class="validate" required>
+      <label for="url">Wish Url</label>
+      <span class="helper-text" data-error="type something">type something</span>
+    </div>
+  </div>
+  <button class="btn btn-primary">Send</button>
+</form>

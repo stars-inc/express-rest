@@ -15,6 +15,8 @@ app.use(express.static('public'))
 app.engine('hbs', hbs.engine)
 app.set('view engine', 'hbs')
 
+app.use(express.urlencoded({extended: true}))
+
 app.use('/', homeRoute)
 app.use('/add', addRoute)
 app.use('/wishes', wishesRoute)
