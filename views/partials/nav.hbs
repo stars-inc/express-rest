@@ -1,0 +1,29 @@
+<nav class="nav">
+  <div class="nav-wrapper">
+    <a href="/" class="logo-link">
+      <svg class="logo">
+        <use xlink:href="#logo"></use>
+      </svg>
+    </a>
+    <ul class="nav-list">
+
+      {{#if isHome}}
+        <li class="list-item active"><a href="/">Main page</a></li>
+      {{else}}
+        <li class="list-item"><a href="/">Main page</a></li>
+      {{/if}}
+
+      {{#if isWishes}}
+        <li class="list-item active"><a href="/wishes">List Wishes</a></li>
+      {{else}}
+        <li class="list-item"><a href="/wishes">List Wishes</a></li>
+      {{/if}}
+
+      {{#if isAdd}}
+        <li class="list-item active"><a href="/add">Add Wishes</a></li>
+      {{else}}
+        <li class="list-item"><a href="/add">Add Wishes</a></li>
+      {{/if}}
+    </ul>
+  </div>
+</nav>
