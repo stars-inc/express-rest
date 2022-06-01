@@ -1,12 +1,16 @@
-<nav class="nav">
+<div class="navbar-fixed">
+  <nav class="grey darken-3">
   <div class="nav-wrapper">
-    <a href="/" class="logo-link">
+    <a href="/" class="brand-logo">
       <svg class="logo">
         <use xlink:href="#logo"></use>
       </svg>
     </a>
-    <ul class="nav-list">
-
+    <a 
+      href="#" 
+      data-target="mobile-demo" 
+      class="sidenav-trigger"><i class="material-icons">compare_arrows</i></a>
+    <ul class="right hide-on-med-and-down">
       {{#if isHome}}
         <li class="list-item active"><a href="/">Main page</a></li>
       {{else}}
@@ -27,3 +31,26 @@
     </ul>
   </div>
 </nav>
+
+  <ul 
+    class="sidenav grey darken-3" 
+    id="mobile-demo">
+    {{#if isHome}}
+      <li class="list-item active"><a href="/">Main page</a></li>
+    {{else}}
+      <li class="list-item"><a href="/">Main page</a></li>
+    {{/if}}
+
+    {{#if isWishes}}
+      <li class="list-item active"><a href="/wishes">List Wishes</a></li>
+    {{else}}
+      <li class="list-item"><a href="/wishes">List Wishes</a></li>
+    {{/if}}
+
+    {{#if isAdd}}
+      <li class="list-item active"><a href="/add">Add Wishes</a></li>
+    {{else}}
+      <li class="list-item"><a href="/add">Add Wishes</a></li>
+    {{/if}}
+  </ul>
+</div>
