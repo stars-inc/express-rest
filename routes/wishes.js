@@ -1,10 +1,13 @@
 const { Router } = require('express')
+const Wish = require('../models/wish')
 const router = Router()
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
+  const wishes = await Wish.getAllData()
   res.render('wishes', { 
     title: 'wishes page',
-    isWishes: true
+    isWishes: true,
+    wishes
   })
 })
 
