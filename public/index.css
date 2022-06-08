@@ -9,6 +9,13 @@ body {
   color: #fff;
 }
 
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+  
+
 .nav-wrapper { padding: 0 1rem; }
 
 .brand-logo { top: 15%; }

@@ -1,5 +1,7 @@
 const { Router} = require('express')
+const Wish = require('../models/wish.js')
 const router = Router()
+
 
 router.get('/', (req, res) => {
   res.render('add', {
@@ -8,9 +10,11 @@ router.get('/', (req, res) => {
   })
 })
 
-router.post('/', (req, res) => {
-  console.log(req.body)
-
+router.post('/', async (req, res) => {
+  const wish = new Wish(req.body.title, req.body.price, req.body.img)
+  
+  await wish.save()
+  
   res.redirect('/wishes')
 })
 
