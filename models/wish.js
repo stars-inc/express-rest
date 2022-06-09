@@ -53,6 +53,13 @@ class Wish {
       )
     })
   }
+
+  static async getById(id) {
+    const wishes = await Wish.getAllData()
+    return wishes.find(w => 
+        w.id === id
+    )
+  }
 }
 
 module.exports = Wish

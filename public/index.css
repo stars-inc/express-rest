@@ -26,3 +26,22 @@ body {
   height: 40px;
   fill: #333;
 }
+
+.wish {
+  display: flex;
+  max-width: 60%;
+  margin: 0 auto;
+  flex-direction: column;
+}
+
+.wish h1 { 
+  text-align: center; 
+  font-size: 3.2rem;
+}
+
+.wish img {
+  display: block;
+  width: 100%;
+}
+
+.price.big { font-size: 1.5rem; }
