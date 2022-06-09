@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   const wish = await Wish.getById(req.params.id)
   res.render('wish', {
-    title: 'Wish',
+    title: `Wish ${wish.title}`,
     wish
   })
 })
