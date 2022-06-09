@@ -19,6 +19,27 @@ class Wish {
     }
   }
 
+  static async update(wish) {
+    const wishes = await Wish.getAllData()
+
+    const idx = wishes.findIndex(w => w.id === wish.id)
+    wishes[idx] = wish
+
+    return new Promise((resolve, reject) => {
+      fs.writeFile(
+        path.join(__dirname, '..', 'data', 'wish.json'),
+        JSON.stringify(wishes),
+        (err) => {
+          if (err) {
+            reject(err)
+          } else {
+            resolve()
+          }
+        }
+      )
+    })
+  }
+
   async save() {
     const wishes = await Wish.getAllData() 
     wishes.push(this.toJson())   
@@ -56,9 +77,7 @@ class Wish {
 
   static async getById(id) {
     const wishes = await Wish.getAllData()
-    return wishes.find(w => 
-        w.id === id
-    )
+    return wishes.find(w => w.id === id)
   }
 }
 
