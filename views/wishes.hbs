@@ -12,9 +12,15 @@
             <p class="card-title text-blue">{{ title }}</p>
             <p class="price">{{ price }}</p>
           </div>
-          <div class="card-action">
+          <div class="card-action in-row">
             <a href="/wishes/{{ id }}">Find more</a>
             <a href="/wishes/{{ id }}/edit?allow=true">Edit wish</a>
+            <form action="/card/add" method="POST">
+              <input type="hidden" name="id" value="{{ id }}">
+              <button 
+                type="submit"
+                class="btn btn-primary">add to card</button>
+            </form>
           </div>
         </div>
       </div>
