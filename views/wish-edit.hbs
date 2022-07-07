@@ -1,0 +1,30 @@
+<h1>Edit Wwish {{ wish.title }}</h1>
+
+<form 
+  action="/wishes/edit"
+  method="POST"
+  class="col s12">
+  <div class="row">
+    <div class="input-field col s6">
+      <input id="title" name="title" type="text" class="validate" required value="{{ wish.title }}">
+      <label for="title">Your wish</label>
+      <span class="helper-text" data-error="type something">Wish title</span>
+    </div>
+    <div class="input-field col s6">
+      <input id="price" name="price" type="number" class="validate" required min="1" value="{{ wish.price }}">
+      <label for="price">Wish Price</label>
+      <span class="helper-text" data-error="type something">Wish Price</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <input id="img" name="img" type="text" class="validate" required value="{{ wish.img }}">
+      <label for="img">Wish Img</label>
+      <span class="helper-text" data-error="type something">url img</span>
+    </div>
+  </div>
+
+  <input type="hidden" name="id" value="{{ wish.id }}">
+
+  <button class="btn btn-primary">Send</button>
+</form>

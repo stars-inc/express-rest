@@ -1,0 +1,27 @@
+<ul 
+    class="sidenav grey darken-3" 
+    id="mobile-demo">
+    {{#if isHome}}
+      <li class="list-item active"><a class="white-text" href="/">Main page</a></li>
+    {{else}}
+      <li class="list-item"><a class="white-text" href="/">Main page</a></li>
+    {{/if}}
+
+    {{#if isWishes}}
+      <li class="list-item active"><a class="white-text" href="/wishes">List Wishes</a></li>
+    {{else}}
+      <li class="list-item"><a class="white-text" href="/wishes">List Wishes</a></li>
+    {{/if}}
+
+    {{#if isAdd}}
+      <li class="list-item active"><a class="white-text" href="/add">Add Wishes</a></li>
+    {{else}}
+      <li class="list-item"><a class="white-text" href="/add">Add Wishes</a></li>
+    {{/if}}
+
+    {{#if isCard}}
+      <li class="list-item active"><a class="white-text" href="/card">Card</a></li>
+    {{else}}
+      <li class="list-item"><a class="white-text" href="/card">Card</a></li>
+    {{/if}}
+  </ul>
