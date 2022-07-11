@@ -1,5 +1,6 @@
 const path = require('path')
 const fs = require('fs')
+const Wish = require('./wish')
 
 const filePath = path.join(__dirname, '..', 'data', 'card.json')
 
@@ -13,6 +14,31 @@ class Card {
           resolve(
             JSON.parse(data)
           )
+        }
+      })
+    })
+  }
+
+  static async remove(id) {
+    const card = await Card.fetch()
+    const index = card.wishes.findIndex(w => w.id === id)
+
+    const wish = card.wishes[index]
+
+    if (wish.count === 1) {
+      card.wishes = card.wishes.filter(w => w.id !== id)
+    } else {
+      card.wishes[index].count--
+    }
+
+    card.price -= wish.price
+
+    return new Promise((resolve, reject) => {
+      fs.writeFile(filePath, JSON.stringify(card), err => {
+        if (err) {
+          reject(err)
+        } else {
+          resolve(card)
         }
       })
     })
