@@ -11,11 +11,18 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-  const wish = new Wish(req.body.title, req.body.price, req.body.img)
-  
-  await wish.save()
-  
-  res.redirect('/wishes')
+  const wish = new Wish({
+    title: req.body.title,
+    price: req.body.price,
+    img: req.body.img
+  })
+
+  try {
+    await wish.save()
+    res.redirect('/wishes')
+  } catch (e) {
+    console.log('Error', e)
+  }  
 })
 
 module.exports = router

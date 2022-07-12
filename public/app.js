@@ -9,3 +9,18 @@ document.querySelectorAll('.price').forEach(el => {
     style: 'currency'
   }).format(el.textContent)
 })
+
+const card = document.querySelector('#card')
+
+if (card) {
+  card.addEventListener('click', event => {
+    if (event.target.classList.contains('remove-data')) {
+      const id = event.target.dataset.id
+
+      fetch('card/remove' + id, {
+        method: 'delete'
+      }).then(res => res.json())
+        .then(() => location.reload())
+    }
+  })
+}
