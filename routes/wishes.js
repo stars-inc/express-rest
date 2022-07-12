@@ -3,7 +3,7 @@ const Wish = require('../models/wish')
 const router = Router()
 
 router.get('/', async (req, res) => {
-  const wishes = await Wish.getAllData()
+  const wishes = await Wish.find()
   res.render('wishes', { 
     title: 'wishes page',
     isWishes: true,
@@ -16,7 +16,7 @@ router.get('/:id/edit', async (req, res) => {
     return res.redirect('/wishes')
   }
 
-  const wish = await Wish.getById(req.params.id)
+  const wish = await Wish.findById(req.params.id)
 
   res.render('wish-edit', {
     title: `Wish ${wish.title}`,
@@ -25,7 +25,7 @@ router.get('/:id/edit', async (req, res) => {
 })
 
 router.get('/:id', async (req, res) => {
-  const wish = await Wish.getById(req.params.id)
+  const wish = await Wish.findById(req.params.id)
   res.render('wish', {
     title: `Wish ${wish.title}`,
     wish
@@ -33,7 +33,7 @@ router.get('/:id', async (req, res) => {
 })
 
 router.post('/edit', async (req, res) => {
-  await Wish.update(req.body)
+  await Wish.findByIdAndUpdate(req.body.id, req.body)
 
   res.redirect('/wishes')
 })

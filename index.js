@@ -1,17 +1,20 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const apiKey = require('./utils/parseArgs')
+const Handlebars = require('handlebars')
 const exphbs = require('express-handlebars')
 const homeRoute = require('./routes/home')
 const addRoute = require('./routes/add')
 const wishesRoute = require('./routes/wishes')
 const cardRoute = require('./routes/card')
+const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access')
 
 const app = express()
 
 const hbs = exphbs.create({
   defaultLayout: 'main',
   extname: 'hbs',
+  handlebars: allowInsecurePrototypeAccess(Handlebars)
 })
 
 app.use(express.static('public'))
