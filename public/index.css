@@ -51,3 +51,5 @@ body {
   align-items: center;
   justify-content: space-between;
 }
+
+.form-edit { margin-bottom: .5rem; }

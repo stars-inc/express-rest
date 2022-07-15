@@ -38,4 +38,10 @@ router.post('/edit', async (req, res) => {
   res.redirect('/wishes')
 })
 
+router.post('/remove', async (req, res) => {
+  await Wish.deleteOne({_id: req.body.id})
+
+  res.redirect('/wishes')
+})
+
 module.exports = router
