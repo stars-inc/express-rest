@@ -4,6 +4,8 @@ const router = Router()
 
 router.get('/', async (req, res) => {
   const wishes = await Wish.find()
+    .populate('userId', 'emeil name')
+    
   res.render('wishes', { 
     title: 'wishes page',
     isWishes: true,
