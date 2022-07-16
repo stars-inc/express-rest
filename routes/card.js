@@ -1,12 +1,12 @@
 const { Router } = require('express')
-const Card = require('../models/card')
 const Wish = require('../models/wish')
 
 const router = Router()
 
 router.post('/add', async (req, res) => {
-  const wish = await Wish.getById(req.body.id)
-  await Card.add(wish)
+  const wish = await Wish.findById(req.body.id)
+  await req.user.addToCart(wish)
+
   res.redirect('/card')
 })
 
@@ -17,13 +17,27 @@ router.delete('/remove:id', async (req, res) => {
 })
 
 router.get('/', async (req, res) => {
-  const card = await Card.fetch()
+  const user = await req.user.populate('cart.items.wishId')
+  const wishes = mapCartItems(user.cart)
+
   res.render('card', {
     title: 'Card',
-    wishes: card.wishes,
-    price: card.price,
+    wishes,
+    price: computedPrice(wishes),
     isCard: true
   })
 })
+
+function mapCartItems(cart) {
+  return cart.items.map(w => ({
+    ...w.wishId._doc, count: w.count
+  }))
+}
+
+function computedPrice(wishes) {
+  return wishes.reduce((total, wish) => {
+    return total += wish.price * wish.count
+  }, 0)
+}
 
 module.exports = router

@@ -4,6 +4,8 @@ const router = Router()
 
 router.get('/', async (req, res) => {
   const wishes = await Wish.find()
+    .populate('userId', 'emeil name')
+    
   res.render('wishes', { 
     title: 'wishes page',
     isWishes: true,
@@ -34,6 +36,12 @@ router.get('/:id', async (req, res) => {
 
 router.post('/edit', async (req, res) => {
   await Wish.findByIdAndUpdate(req.body.id, req.body)
+
+  res.redirect('/wishes')
+})
+
+router.post('/remove', async (req, res) => {
+  await Wish.deleteOne({_id: req.body.id})
 
   res.redirect('/wishes')
 })
